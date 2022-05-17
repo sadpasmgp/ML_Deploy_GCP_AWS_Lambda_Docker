@@ -1,0 +1,32 @@
+1. Install nodejs
+2. Ensure npm(package manager) is installed
+3. run
+	npm install -g serverless
+4. To verify serverless, run
+	sls
+5. Login to AWS management console > IAm > Add user > create programmatic Access > generate Access Key
+6. on terminal run:
+	serverless config credentials --provider aws --key <enter key without ankle brackets> --secret <enter secret key without ankle brackets>
+
+7. create serverless project: (create in a different folder to the existing one to generate the handler.py template )  run
+	serverless create -t "aws-python"
+	
+	to check available templates run 
+	serverless create --help
+	
+8.  update the "service" property in serverless.yml with your service name
+
+9. Install sls plugin: run
+	sls plugin install -n serverless-python-requirements
+	
+10. Edit serverless.yml that is generated:
+	change python version, change name of function, include or exclude additional packages, region etc
+	
+11. run:
+	sls deploy
+	
+12. Now go to AWS lambda on console and test the function
+
+13. To test from terminal: run
+	sls invoke --function <get function from serverless.yml> --path event.json
+	
